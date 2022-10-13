@@ -8,6 +8,8 @@ import (
 	"strings"
 	"sync"
 	"unicode"
+
+	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
 // These flags define options for tag handling
@@ -539,6 +541,9 @@ func set(to, from reflect.Value, deepCopy bool, converters map[converterPair]Typ
 		}
 	} else if from.Kind() == reflect.Ptr {
 		return set(to, from.Elem(), deepCopy, converters)
+	} else if from.Type() == reflect.TypeOf(primitive.ObjectID{}) {
+		oid := from.Interface().(primitive.ObjectID).Hex()
+		to.Set(reflect.ValueOf(oid))
 	} else {
 		return false
 	}
