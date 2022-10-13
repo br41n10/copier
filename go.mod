@@ -1,4 +1,4 @@
-module github.com/jinzhu/copier
+module github.com/br41n10/copier
 
 go 1.13
 

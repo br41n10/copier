@@ -8,7 +8,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/jinzhu/copier"
+	"github.com/br41n10/copier"
 )
 
 type User struct {
